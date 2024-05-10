@@ -3,28 +3,31 @@ import java.util.ArrayList;
 
 public class Unique_subset {
     public static void printSubsets(int input[]) {
-  // Write your code here
-  printSubsetsHelper(input,0,new ArrayList<Integer>());
-}
-
-private static void printSubsetsHelper(int[] input, int index, ArrayList<Integer> arrayList) {
-  // TODO Auto-generated method stub
-  if(index >= input.length)
-  {
-    for(int i:arrayList)
-    {
-      System.out.print(i+" ");
+        printSubsetsHelper(input, 0, new ArrayList<>());
     }
-    System.out.println();
-    return;
-  }
-  while(index+1 < input.length && input[index+1] == input[index])
-  {
-    index+=1;
-  }
-  printSubsetsHelper(input,index+1,arrayList);
-  arrayList.add(input[index]);
-  printSubsetsHelper(input,index+1,arrayList);
-  arrayList.remove(arrayList.size()-1);
-}
+
+    private static void printSubsetsHelper(int[] input, int index, ArrayList<Integer> subset) {
+        // Add the current subset to the result
+        printSubset(subset);
+
+        // Explore all possible subsets with the current element
+        for (int i = index; i < input.length; i++) {
+            // Skip duplicate elements
+            if (i > index && input[i] == input[i - 1]) {
+                continue;
+            }
+
+            subset.add(input[i]);
+            printSubsetsHelper(input, i + 1, subset);
+            subset.remove(subset.size() - 1);
+        }
+    }
+
+    private static void printSubset(ArrayList<Integer> subset) {
+        for (int num : subset) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
 }
