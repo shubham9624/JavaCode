@@ -1,17 +1,18 @@
 package JavaCode;
 import java.util.*;
-public class Create_Binary_Tree_Inorde_with_preorder {
-    class BinaryTreeNode<T> {
-		T data;
-		BinaryTreeNode<T> left;
-		BinaryTreeNode<T> right;
+class BinaryTreeNode<T> {
+    T data;
+    BinaryTreeNode<T> left;
+    BinaryTreeNode<T> right;
 
-		public BinaryTreeNode(T data) {
-			this.data = data;
-			this.left = null;
-			this.right = null;
-		}
-	}
+    public BinaryTreeNode(T data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+public class Create_Binary_Tree_Inorde_with_preorder {
+  
     
     public static BinaryTreeNode<Integer> buildTree(int[] preOrder, int[] inOrder) {
 		//Your code goes here
